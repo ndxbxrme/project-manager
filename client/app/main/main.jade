@@ -3,8 +3,7 @@
     ul.grid-block.project-list(ui-sortable='{update:$$childHead.update()}', ng-model='$$childHead.items')
       li.grid-content.small-6.medium-3.large-2(ng-repeat="project in $$childHead.items") 
         a(href='/project/{{project._id}}')
-          img.thumbnail(ng-show='project.image', ng-src='https://res.cloudinary.com/parks-brainstorm/image/upload/c_fill,h_144,w_200/{{project.image.public_id}}')
-          img.thumbnail(ng-hide='project.image', ng-src='http://placehold.it/200x144&text=project')
+          div(resource-image='project.image', size='200x144', ri-text='project')
           p(style='color: {{project.color}}') {{project.name}}
           .edit(ng-click="modal.setId(project._id); modal.setType('project')", zf-open='modal') Edit
       li.item.grid-content.shrink
