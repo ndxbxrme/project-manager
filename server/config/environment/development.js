@@ -5,8 +5,8 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/p-dev'
+    uri: 'mongodb://misprojmana:projomanaman5@ds041387.mongolab.com:41387/mis-projectmanager'
   },
 
-  seedDB: false
+  seedDB: true
 };
