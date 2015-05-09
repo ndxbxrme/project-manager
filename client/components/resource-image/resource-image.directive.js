@@ -7,7 +7,7 @@ angular.module('pApp')
       restrict: 'EA',
       scope: {
         image: '=resourceImage',
-        riText: '@',
+        text: '@',
         size: '@'
       },
       replace: true,

@@ -3,7 +3,7 @@
     ul.grid-block.project-list(ui-sortable='{update:$$childHead.update()}', ng-model='$$childHead.items')
       li.grid-content.small-6.medium-3.large-2(ng-repeat="project in $$childHead.items") 
         a(href='/project/{{project._id}}')
-          div(resource-image='project.image', size='200x144', ri-text='project')
+          div(resource-image='project.image', size='200x144', text='project')
           p(style='color: {{project.color}}') {{project.name}}
           .edit(ng-click="modal.setId(project._id); modal.setType('project')", zf-open='modal') Edit
       li.item.grid-content.shrink

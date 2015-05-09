@@ -1,6 +1,6 @@
 div(ngf-select='', ngf-change='upload($files)')
   .image-uploader(ng-file-drop='upload($files)', ng-file-drag-over-class="'hover'")
-    div(resource-image='image', size='150x150', ri-text='upload')
+    div(resource-image='image', size='150x150', text='upload')
     .progress-bar(ng-show='uploading')
       .status {{status}}
       .progress(style='width: {{progress}}%', ng-init='progress=0')
