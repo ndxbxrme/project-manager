@@ -41,10 +41,10 @@ module.exports = function (socketio) {
   // 1. You will need to send the token in `client/components/socket/socket.service.js`
   //
   // 2. Require authentication here:
-  socketio.use(require('socketio-jwt').authorize({
-    secret: config.secrets.session,
-    handshake: true
-  }));
+  //socketio.use(require('socketio-jwt').authorize({
+  //  secret: config.secrets.session,
+  //  handshake: true
+  //}));
 
   socketio.on('connection', function (socket) {
     socket.cid = socket.client.request._query.cid;

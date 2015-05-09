@@ -12,7 +12,7 @@ angular.module('pApp')
       companyId = '123';
       ioSocket = io('', {
         // Send auth token on connection, you will need to DI the Auth service above
-        'query': 'token=' + authToken + '&cid=' + companyId,
+        'query': 'cid=' + companyId,
         path: '/socket.io-client'
       });
 
