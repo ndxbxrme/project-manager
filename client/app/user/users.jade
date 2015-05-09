@@ -1,2 +1,3 @@
 .col-md-12
-    | This is the user view.
+  div(ng-repeat='user in data.getUsers()')
+    a(href='/user/{{user._id}}'){{user.name}}

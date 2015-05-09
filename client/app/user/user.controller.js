@@ -2,11 +2,10 @@
 
 angular.module('pApp')
 .controller('UserCtrl', function ($scope, dataModel, User, $stateParams, $window) {
-  $scope.data = dataModel.syncData(function(){
-    if($stateParams.id) {
-      $scope.user = User.get({id:$stateParams.id});
-    }
-  });
+  $scope.data = dataModel.syncData();
+  if($stateParams.id) {
+    $scope.user = User.get({id:$stateParams.id});
+  }
   
   $scope.submit = function() {
     $scope.submitted = true;

@@ -2,6 +2,7 @@
 span.left(ng-show='isLoggedIn()')
   a(href='/') Projects
   a(href='/admin', ng-show='isAdmin()') &nbsp; Admin
+  a(href='/user', ng-show='isAdmin()') &nbsp; User
 span.right(ng-show='isLoggedIn()')
   a(href='/settings') Settings
   a(href='', ng-click='logout()', ng-show='isLoggedIn()') &nbsp; Logout
