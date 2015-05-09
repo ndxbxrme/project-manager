@@ -1,0 +1,77 @@
+br
+br
+.small-12.medium-offset-3.medium-6.large-offset-4.large-4.login-form
+  form.form.grid-block(name='form', ng-submit='login(form)', novalidate='', ng-if='!signup')
+    .small-12.grid-content
+      h2 Log in
+    .small-12.medium-6.grid-content
+      label Email
+      input(type='text', name='email', ng-model='user.email')
+    .small-12.medium-6.grid-content
+      label Password
+      input(type='password', name='password', ng-model='user.password')
+
+    .small-12.grid-content
+      p.help-block(ng-show='form.email.$error.required && form.password.$error.required && submitted')
+        | Please enter your email and password.
+      p.help-block(ng-show='errors.other') {{ errors.other }}
+
+    .small-12.grid-content
+      button.button(type='submit')
+        | Login
+      a.button.secondary(ng-click='$parent.signup=true')
+        | Register
+    .small-12.grid-content.text-center
+      hr
+      a.button.btn-facebook(href='', ng-click='loginOauth("facebook")')
+        i.fa.fa-facebook
+      = ' '
+      a.button.btn-google-plus(href='', ng-click='loginOauth("google")')
+        i.fa.fa-google-plus
+      = ' '
+      a.button.btn-twitter(href='', ng-click='loginOauth("twitter")')
+        i.fa.fa-twitter
+
+  form.form.grid-block(name='form', ng-submit='register(form)', novalidate='', ng-if='signup')
+    .small-12.grid-content
+      h2 Sign up
+    .small-12.medium-6.grid-content
+      label Name
+      input(type='text', name='name', ng-model='user.name', required='')
+      p.help-block(ng-show='form.name.$error.required && submitted')
+        | A name is required
+    .small-12.medium-6.grid-content(ng-class='{ "has-success": form.email.$valid && submitted,\
+    "has-error": form.email.$invalid && submitted }')
+      label Email
+      input(type='email', name='email', ng-model='user.email', required='', mongoose-error='')
+      p.help-block(ng-show='form.email.$error.email && submitted')
+        | Doesn't look like a valid email.
+      p.help-block(ng-show='form.email.$error.required && submitted')
+        | What's your email address?
+      p.help-block(ng-show='form.email.$error.mongoose')
+        | {{ errors.email }}
+    .small-12.medium-6.grid-content(ng-class='{ "has-success": form.password.$valid && submitted,\
+    "has-error": form.password.$invalid && submitted }')
+      label Password
+      input(type='password', name='password', ng-model='user.password', ng-minlength='3', required='', mongoose-error='')
+      p.help-block(ng-show='(form.password.$error.minlength || form.password.$error.required) && submitted')
+        | Password must be at least 3 characters.
+      p.help-block(ng-show='form.password.$error.mongoose')
+        | {{ errors.password }}
+    .small-12.medium-6.grid-content
+      br
+      button.button(type='submit')
+        | Sign up
+      = ' '
+      a.button.secondary(ng-click='$parent.signup=false')
+        | Login
+    .small-12.grid-content.text-center
+      hr
+      a.button.btn-facebook(href='', ng-click='loginOauth("facebook")')
+        i.fa.fa-facebook
+      = ' '
+      a.button.btn-google-plus(href='', ng-click='loginOauth("google")')
+        i.fa.fa-google-plus
+      = ' '
+      a.button.btn-twitter(href='', ng-click='loginOauth("twitter")')
+        i.fa.fa-twitter

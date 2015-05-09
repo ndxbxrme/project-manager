@@ -1,0 +1,7 @@
+div(ngf-select='', ngf-change='upload($files)')
+  .image-uploader(ng-file-drop='upload($files)', ng-file-drag-over-class="'hover'")
+    img.thumbnail(ng-hide='image', src='http://placehold.it/150&text=upload')
+    img.thumbnail(ng-show='image', ng-src='https://res.cloudinary.com/parks-brainstorm/image/upload/c_fill,h_150,w_150/{{image.public_id}}')
+    .progress-bar(ng-show='uploading')
+      .status {{status}}
+      .progress(style='width: {{progress}}%', ng-init='progress=0')

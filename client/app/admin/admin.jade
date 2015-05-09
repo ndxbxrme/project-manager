@@ -1,0 +1,36 @@
+.admin.grid-block
+  .small-12.medium-6.large-6.grid-content
+    h1 Teams
+    span.block-list(serialize-index='', fetch-fn-name='getTeams', resource='teamRes', ng-if="isAdmin()")
+      ul.team-list(ui-sortable='{update:$$childHead.update()}', ng-model='$$childHead.items')
+        li(ng-repeat="team in $$childHead.items", ng-click="modal.setId(team._id); modal.setType('team')", zf-open='modal') {{team.name}}
+      a.button(ng-click="modal.setId(''); modal.setType('team')", zf-open='modal') + Add a team
+  
+  .small-12.medium-6.large-6.grid-content
+    h1 Lists
+    span.block-list(serialize-index='', fetch-fn-name='getLists', resource='listRes', ng-if="isAdmin()")
+      ul.list-list(ui-sortable='{update:$$childHead.update()}', ng-model='$$childHead.items')
+        li(ng-repeat="list in $$childHead.items", ng-click="modal.setId(list._id); modal.setType('list')", zf-open='modal') {{list.name}}
+      a.button(ng-click="modal.setId(''); modal.setType('list')", zf-open='modal') + Add a list
+      
+  .small-12.medium-6.large-4.grid-content
+    h1 Statuses
+    span.block-list(serialize-index='', fetch-fn-name='getStatuses', resource='statusRes', ng-if="isAdmin()")
+      ul.status-list(ui-sortable='{update:$$childHead.update()}', ng-model='$$childHead.items')
+        li(ng-repeat="status in $$childHead.items", ng-click="modal.setId(status._id); modal.setType('status')", zf-open='modal') {{status.name}}
+      a.button(ng-click="modal.setId(''); modal.setType('status')", zf-open='modal') + Add a status
+      
+  .small-12.medium-6.large-4.grid-content
+    h1 Categories
+    span.block-list(serialize-index='', fetch-fn-name='getCategories', resource='categoryRes', ng-if="isAdmin()")
+      ul.categorys-list(ui-sortable='{update:$$childHead.update()}', ng-model='$$childHead.items')
+        li(ng-repeat="category in $$childHead.items", ng-click="modal.setId(category._id); modal.setType('category')", zf-open='modal') {{category.name}}
+      a.button(ng-click="modal.setId(''); modal.setType('category')", zf-open='modal') + Add a category
+      
+  .small-12.medium-6.large-4.grid-content
+    h1 Priorities
+    span.block-list(serialize-index='', fetch-fn-name='getPriorities', resource='priorityRes', ng-if="isAdmin()")
+      ul.priority-list(ui-sortable='{update:$$childHead.update()}', ng-model='$$childHead.items')
+        li(ng-repeat="priority in $$childHead.items", ng-click="modal.setId(priority._id); modal.setType('priority')", zf-open='modal') {{priority.name}}
+      a.button(ng-click="modal.setId(''); modal.setType('priority')", zf-open='modal') + Add a priority
+      

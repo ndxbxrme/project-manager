@@ -1,0 +1,9 @@
+.modal-status
+  h1(ng-show='status._id') Edit status
+  h1(ng-hide='status._id') Add status
+  form(name='forms.form', novalidate='')
+    label Status name
+    input(type='text', ng-model='status.name', name='name', required='', placeholder='Status name')
+    p(ng-show='forms.form.name.$error.required && submitted') Please enter a name
+    input(type='submit', ng-click='submit()', value='Submit')
+    input.secondary(type='button', ng-click='remove()', value='Remove')

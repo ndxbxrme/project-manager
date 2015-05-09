@@ -1,0 +1,26 @@
+.modal-project.grid-content
+  form.grid-block(name='forms.form', novalidate='')
+    .small-12.grid-content
+      h1(ng-show='project._id') Edit {{project.name}}
+      h1(ng-hide='project._id') Add project
+    .small-6.grid-content
+      label Project name
+      input(type='text', ng-model='project.name', name='name', required='', placeholder='Project name')
+      p(ng-show='form.name.$error.required && submitted') Please enter a name
+      label Colour
+      input(type='text', minicolors='', ng-model='project.color', placeholder='color')
+    .small-6.grid-content.text-center
+      div(image-uploader='', ng-model='project.image')
+    .small-12.grid-content
+      label Project users
+      select(ui-select2='', ng-multiple='true', ng-model='project.users', placeholder='Users', style='width: 100%')
+        option(ng-repeat='user in data.getUsers()', value='{{user._id}}') {{user.name}}
+      label Project statuses
+      select(ui-select2='', ng-multiple='true', ng-model='project.statuses', placeholder='Statuses', style='width: 100%')
+        option(ng-repeat='status in data.getStatuses()', value='{{status._id}}') {{status.name}}
+      label Start date
+      input(type='text', interpret-date='', ng-model='project.startDate', placeholder='Start Date')
+      | {{project.startDate | date:'short'}}
+      tags-input(ng-model='project.tags', placeholder='Tags')
+      input(type='submit', ng-click='submit()', value='Submit')
+      input.secondary(type='button', ng-click='remove()', value='Remove')

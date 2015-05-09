@@ -1,0 +1,22 @@
+.grid-block(style="width: {{ columnWidth * (data.getStatuses() | filterByArray:project.statuses:'_id').length }}vw")
+  div.text-center(ng-repeat="status in data.getStatuses() | filterByArray:project.statuses:'_id' | orderBy: 'index'", style='width: {{columnWidth}}vw') 
+    h4 {{status.name}}
+    .grid-content
+      div(ng-repeat="team in data.getTeams() | orderBy:'index'")
+        div(ng-repeat='user in data.getUsers() | filter:team._id')
+          a(href='/story/{{story._id}}', ng-repeat="story in data.getStories() | filter:{project:project._id, status:status._id, handler:user._id} | orderBy:'-startDate'")
+            .card.text-left(style='width: 100%')
+              .card-divider.grid-block(style='border-bottom: 0.5rem solid {{team.color}}')
+                .small-6.grid-content
+                  div {{story.name}}
+                abbr.small-6.grid-content.text-right {{story.startDate | date:'short'}}
+                  div(ng-repeat='user in data.getUsers() | filter:story.handler') {{user.name}}
+              .card-section(ng-bind-html='story.info')
+      a.unassigned(href='/story/{{story._id}}', ng-repeat="story in data.getStories() | filter:{project:project._id, status:status._id} | isNotDefined:'handler' | orderBy:'-startDate'")
+        .card.text-left
+          .card-divider.grid-block(style='border-bottom: 0.5rem solid {{team.color}}')
+            .small-6.grid-content
+              div {{story.name}}
+            abbr.small-6.grid-content.text-right {{story.startDate | date:'short'}}
+              div Unassigned
+          .card-section(ng-bind-html='story.info')

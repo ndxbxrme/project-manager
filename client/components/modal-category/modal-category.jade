@@ -1,0 +1,9 @@
+.modal-category
+  h1(ng-show='category._id') Edit category
+  h1(ng-hide='category._id') Add category
+  form(name='forms.form', novalidate='')
+    label Category name
+    input(type='text', ng-model='category.name', name='name', required='', placeholder='Category name')
+    p(ng-show='forms.form.name.$error.required && submitted') Please enter a name
+    input(type='submit', ng-click='submit()', value='Submit')
+    input.secondary(type='button', ng-click='remove()', value='Remove')

@@ -1,0 +1,64 @@
+.grid-content
+  form.grid-block(name='form', novalidate='', ng-submit='submit()')
+    .small-12
+      .grid-content
+        h1(ng-hide='story._id') Add a story
+        h1(ng-show='story._id') Edit story
+    .small-12.medium-6.large-4
+      .grid-content
+        .grid-block
+          .small-12.grid-content
+            label Name
+            input(type='text', name='name', ng-model='story.name')
+            label Info
+            p(name='info', ng-model='story.info', medium-editor='', options='{"placeholder": "Enter a description", "buttons": ["bold", "italic", "underline", "anchor", "header1", "header2", "quote", "orderedlist", "unorderedlist"]}')
+          .small-12.grid-content
+            label Assign to
+            select(ng-model='story.handler', placeholder='Assign To', style='width: 100%')
+              option(ng-repeat="handler in data.getUsers() | filterByArray:project.users:'_id' | orderBy:'index'", value='{{handler._id}}') {{handler.name}}
+          .small-12.grid-content
+            label Workers
+            select(ui-select2='', ng-multiple='true', ng-model='story.workers', placeholder='Workers', style='width: 100%')
+              option(ng-repeat="worker in data.getUsers() | filterByArray:project.users:'_id' | orderBy:'index'", value='{{worker._id}}') {{worker.name}}
+          .small-12.medium-6.grid-content
+            label Status
+            select(ng-model='story.status', placeholder='Status', style='width: 100%')
+              option(ng-repeat="status in data.getStatuses() | filterByArray:project.statuses:'_id' | orderBy:'index'", value='{{status._id}}') {{status.name}}
+          .small-12.medium-6.grid-content
+            label Priority
+            select(ng-model='story.priority', placeholder='Priority', style='width: 100%')
+              option(ng-repeat="priority in data.getPriorities() | filterByArray:project.priority:'_id' | orderBy:'index'", value='{{priority._id}}') {{priority.name}}
+          .small-12.medium-6.grid-content
+            label List
+            select(ng-model='story.list', placeholder='List', style='width: 100%')
+              option(ng-repeat="list in data.getLists() | filterByArray:project.list:'_id' | orderBy:'index'", value='{{list._id}}') {{list.name}}
+          .small-12.medium-6.grid-content
+            label Category
+            select(ng-model='story.category', placeholder='Category', style='width: 100%')
+              option(ng-repeat="category in data.getCategories() | filterByArray:project.category:'_id' | orderBy:'index'", value='{{category._id}}') {{category.name}}
+          .small-12.grid-content
+            input.button(type='submit', value='Submit')
+    .small-12.medium-6.large-4
+      .grid-content
+        .grid-block
+          .small-12.medium-6.grid-content
+            label Start date
+            input(type='text', ng-model='story.startDate', interpret-date='', placeholder='Start date')
+          .small-12.medium-6.grid-content
+            label Due date
+            input(type='text', ng-model='story.dueDate', interpret-date='', placeholder='Due date')
+          .small-12.grid-content
+            label Attachments
+            div(resource-uploader='', ng-model='story.attachments')
+    .small-12.medium-12.large-4
+      .grid-content
+        .grid-block
+          div(notes='', ng-model='story.notes')
+          br
+          .small-12.medium-6.large-12.grid-content
+            label History
+            .card(ng-repeat="item in story.history | orderBy:'-date'") 
+              .card-divider
+                abbr {{item.date | date:'short'}}
+                div(ng-bind-html='item.msg')
+            span.label(ng-hide='story.notes') No history to display

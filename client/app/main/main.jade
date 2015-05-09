@@ -1,0 +1,17 @@
+.main.text-center
+  span(serialize-index='', fetch-fn-name='getProjects', resource='projectRes', ng-if="isAdmin()")
+    ul.grid-block.project-list(ui-sortable='{update:$$childHead.update()}', ng-model='$$childHead.items')
+      li.grid-content.small-6.medium-3.large-2(ng-repeat="project in $$childHead.items") 
+        a(href='/project/{{project._id}}')
+          img.thumbnail(ng-show='project.image', ng-src='https://res.cloudinary.com/parks-brainstorm/image/upload/c_fill,h_144,w_200/{{project.image.public_id}}')
+          img.thumbnail(ng-hide='project.image', ng-src='http://placehold.it/200x144&text=project')
+          p(style='color: {{project.color}}') {{project.name}}
+          .edit(ng-click="modal.setId(project._id); modal.setType('project')", zf-open='modal') Edit
+      li.item.grid-content.shrink
+        a.button(ng-click="modal.setId(''); modal.setType('project')", zf-open='modal') +
+  ul.grid-block.project-list(ng-if='!isAdmin()')
+    li.grid-content.small-6.medium-3.large-2(ng-repeat="project in data.getProjects() | orderBy:'index'") 
+      a(href='/project/{{project._id}}')
+        img.thumbnail(ng-show='project.image', ng-src='https://res.cloudinary.com/parks-brainstorm/image/upload/c_fill,h_144,w_200/{{project.image.public_id}}')
+        img.thumbnail(ng-hide='project.image', ng-src='http://placehold.it/200x150&text=project')
+        p(style='color: {{project.color}}') {{project.name}}

@@ -1,0 +1,16 @@
+ng-form.notes.small-12.medium-6.large-12.grid-content(name='noteform', novalidate='')
+  label Notes
+    span(style='float:right')
+      a(ng-click='noteOpen = !noteOpen')
+        span(ng-hide='noteOpen') + New note
+        span(ng-show='noteOpen') - Close
+  div(ng-show='noteOpen')
+    .card
+      .card-section
+        div(ng-model='note', medium-editor='', options='{"placeholder": "Enter a note", "buttons": ["bold", "italic", "underline", "anchor", "header1", "header2", "quote", "orderedlist", "unorderedlist"]}')
+    input.button(type='button', value='Add',ng-click='notesubmit()')
+  .card(ng-repeat="item in notes | orderBy:'-date'") 
+    .card-divider
+      abbr {{item.date | date:'short'}}
+    .card-section(ng-bind-html='item.note')
+  span.label(ng-hide='notes.length') No notes to display

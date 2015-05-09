@@ -1,0 +1,41 @@
+.main
+  margin-top 1em
+  
+  .project-list li
+    position relative
+    margin-bottom 1em
+    
+    &:hover
+      transform scale(1.1)
+    
+    &.ng-enter, &.ng-hide-add
+      animation: fadeIn 0.3s
+      
+    &.ng-leave, &.ng-hide-remove
+      animation: fadeOut 0s
+      
+    &.ng-enter-stagger
+      animation-delay 0.05s
+    
+    p
+      position absolute
+      bottom 0
+      left 50%
+      padding 0 0.5rem
+      transform translateX(-50%)
+      text-align center
+      background rgba(255,255,255,0.9)
+      font-weight bold
+      
+    .edit
+      position absolute
+      top 11%
+      right 16%
+      background rgba(255,255,255,0.9)
+      transition all 0.2s
+      opacity 0
+      
+    &:hover
+      .edit
+        right 21%
+        opacity 1

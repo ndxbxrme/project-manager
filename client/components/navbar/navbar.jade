@@ -1,0 +1,7 @@
+.center.title Project Manager
+span.left(ng-show='isLoggedIn()')
+  a(href='/') Projects
+  a(href='/admin', ng-show='isAdmin()') &nbsp; Admin
+span.right(ng-show='isLoggedIn()')
+  a(href='/settings') Settings
+  a(href='', ng-click='logout()', ng-show='isLoggedIn()') &nbsp; Logout

@@ -1,0 +1,4 @@
+.grid-block
+  .small-6.medium-4.grid-content(ng-repeat='resource in attachments')
+    img.thumbnail(ng-src='https://res.cloudinary.com/parks-brainstorm/image/upload/c_fill,h_150,w_150/{{resource.public_id}}')
+  .small-6.medium-4.grid-content(image-uploader='', ng-model='upimage')

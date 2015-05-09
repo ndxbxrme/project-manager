@@ -1,0 +1,83 @@
+@import "font-awesome/css/font-awesome.css"
+
+//
+// Font Awesome Fonts
+//
+
+@font-face
+  font-family: 'FontAwesome'
+  src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?v=4.1.0')
+  src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'),
+  url('../bower_components/font-awesome/fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'),
+  url('../bower_components/font-awesome/fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'),
+  url('../bower_components/font-awesome/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+  font-weight: normal
+  font-style: normal
+
+//
+// App-wide Styles
+//
+
+.scrollY
+  overflow-y scroll
+  overflow-x hidden
+.scrollX
+  overflow-x scroll
+  
+.select2-container
+  margin-bottom 1rem
+
+.thumbnail
+  margin-bottom 1rem
+  
+.card
+  p, h1, h2, h3, h4, h5, h6
+    margin-bottom 0rem
+    margin-top 0rem
+
+  
+.background
+  background url('https://download.unsplash.com/photo-1423882503395-8571951e45cc') center
+  background-size cover
+  position fixed
+  top 0
+  left 0
+  right 0
+  bottom 0
+  filter grayscale(80%) opacity(0.5)
+  z-index -1
+  transition 1s
+  
+  &.loggedin {
+    filter grayscale(80%) opacity(0.05) 
+  }
+
+// Responsive: Portrait tablets and up
+@media screen and (min-width: 768px)
+    .container
+        max-width 730px
+
+// Component styles are injected through grunt
+// injector
+@import 'admin/admin.styl';
+@import 'main/main.styl';
+@import 'project/project.styl';
+@import 'story/story.styl';
+@import 'user/user.styl';
+@import 'frontpage/frontpage.styl';
+@import 'image-uploader/image-uploader.styl';
+@import 'kanban/kanban.styl';
+@import 'login/login.styl';
+@import 'minicolors/minicolors.styl';
+@import 'modal-category/modal-category.styl';
+@import 'modal-list/modal-list.styl';
+@import 'modal-priority/modal-priority.styl';
+@import 'modal-project/modal-project.styl';
+@import 'modal-status/modal-status.styl';
+@import 'modal-team/modal-team.styl';
+@import 'notes/notes.styl';
+@import 'online-users/online-users.styl';
+@import 'panel-story/panel-story.styl';
+@import 'resource-image/resource-image.styl';
+@import 'resource-uploader/resource-uploader.styl';
+// endinjector

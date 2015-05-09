@@ -1,0 +1,18 @@
+.grid-content
+  form.grid-block(name='form', novalidate='', ng-submit='submit()')
+    .small-12
+      .grid-content
+        h1(ng-hide='user._id') Add a user
+        h1(ng-show='user._id') Edit user
+    .small-12.medium-6.large-4
+      .grid-content
+        .grid-block
+          .small-12.grid-content
+            label Name
+            input(type='text', name='name', ng-model='user.name')
+          .small-12.grid-content
+            label Team
+            select(ng-model='user.team', placeholder='Team')
+              option(ng-repeat='team in data.getTeams()', value='{{team._id}}') {{team.name}}
+    .small-12.grid-content
+      input.button(type='submit', value='Submit')

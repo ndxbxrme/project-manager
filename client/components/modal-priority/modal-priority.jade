@@ -1,0 +1,9 @@
+.modal-priority
+  h1(ng-show='priority._id') Edit priority
+  h1(ng-hide='priority._id') Add priority
+  form(name='forms.form', novalidate='')
+    label Priority name
+    input(type='text', ng-model='priority.name', name='name', required='', placeholder='Priority name')
+    p(ng-show='forms.form.name.$error.required && submitted') Please enter a name
+    input(type='submit', ng-click='submit()', value='Submit')
+    input.secondary(type='button', ng-click='remove()', value='Remove')

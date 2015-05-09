@@ -1,0 +1,11 @@
+.modal-team
+  h1(ng-show='team._id') Edit team
+  h1(ng-hide='team._id') Add team
+  form(name='forms.form', novalidate='')
+    label Team name
+    input(type='text', ng-model='team.name', name='name', required='', placeholder='Team name')
+    p(ng-show='forms.form.name.$error.required && submitted') Please enter a name
+    label Colour
+    input(type='text', minicolors='', ng-model='team.color', placeholder='color')
+    input(type='submit', ng-click='submit()', value='Submit')
+    input.secondary(type='button', ng-click='remove()', value='Remove')
