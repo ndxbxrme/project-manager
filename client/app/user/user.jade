@@ -14,5 +14,7 @@
             label Team
             select(ng-model='user.team', placeholder='Team')
               option(ng-repeat='team in data.getTeams()', value='{{team._id}}') {{team.name}}
+          .small-12.grid-content
+            div(image-uploader='', ng-model='user.image')
     .small-12.grid-content
       input.button(type='submit', value='Submit')

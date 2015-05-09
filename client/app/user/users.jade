@@ -1,9 +1,13 @@
-.grid-content
-  .grid-block
-    .card(ng-repeat='user in data.getUsers()')
-      .card-divider
-        a(href='/user/{{user._id}}'){{user.name}}
-      .card-section
-        p{{user.email}}
-        p{{user.role}}
-        div(resource-image='user.image', size='32x32', text='user')
+.grid-block.users
+  .grid-container.small-12.medium-6
+    .grid-content
+      .card(ng-repeat='user in data.getUsers()')
+        .card-divider
+          .left 
+            a(href='/user/{{user._id}}'){{user.name}}
+          .right
+            div(ng-repeat='team in data.getTeams() | filter:user.team') {{team.name}}
+        .card-section
+          p{{user.email}}
+          p{{user.role}}
+          div(resource-image='user.image', size='32x32', text='user')
