@@ -1,9 +1,9 @@
 .grid-content
   .grid-block
-    .col-md-12
-      .card(ng-repeat='user in data.getUsers()')
-        .card-divider
-          a(href='/user/{{user._id}}'){{user.name}}
-        .card-section
-          p{{user.email}}
-          p{{user.role}}
+    .card(ng-repeat='user in data.getUsers()')
+      .card-divider
+        a(href='/user/{{user._id}}'){{user.name}}
+      .card-section
+        p{{user.email}}
+        p{{user.role}}
+        div(resource-image='user.image', size='32x32', text='user')
