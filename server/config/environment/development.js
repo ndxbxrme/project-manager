@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://misprojmana:projomanaman5@ds041387.mongolab.com:41387/mis-projectmanager'
   },
 
-  seedDB: true
+  seedDB: false
 };
