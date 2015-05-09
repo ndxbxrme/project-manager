@@ -6,7 +6,8 @@
           .left 
             a(href='/user/{{user._id}}'){{user.name}}
           .right
-            div(ng-repeat='team in data.getTeams() | filter:user.team') {{team.name}}
+            div(ng-repeat='team in data.getTeams() | filter:user.team', ng-show='user.team') {{team.name}}
+            div(ng-hide='user.team') Unassigned
         .card-section
           p{{user.email}}
           p{{user.role}}
